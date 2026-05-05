@@ -1,0 +1,675 @@
+Вот готовый HTML-документ для творческого сайта на тему рисования. Вы можете сохранить его как `.html` файл и открыть в браузере.
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Творческая студия | Мир рисования</title>
+    <!-- Google Fonts & Font Awesome для иконок -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fef9f0 0%, #fff6ed 100%);
+            font-family: 'Inter', sans-serif;
+            color: #2c241a;
+            scroll-behavior: smooth;
+        }
+
+        /* Кастомный скролл */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0e4d0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c0a080;
+            border-radius: 10px;
+        }
+
+        /* Контейнеры */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Header / Навигация */
+        header {
+            padding: 24px 0 16px;
+            border-bottom: 1px solid rgba(160, 120, 80, 0.2);
+            background: rgba(255, 248, 240, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #b5651e, #8b4513);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .logo i {
+            background: none;
+            color: #b5651e;
+            margin-right: 8px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #4a3320;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: #b5651e;
+        }
+
+        /* Hero секция */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #8B4513, #D2691E, #CD853F);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 680px;
+            margin: 0 auto 32px;
+            color: #5c4a36;
+            line-height: 1.5;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: #b5651e;
+            color: white;
+            box-shadow: 0 8px 18px rgba(181, 101, 30, 0.25);
+        }
+        .btn-primary:hover {
+            background: #9b4e15;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(139, 69, 19, 0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #b5651e;
+            color: #b5651e;
+        }
+        .btn-outline:hover {
+            background: #b5651e10;
+            transform: translateY(-2px);
+        }
+
+        /* Секция направлений */
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            margin-bottom: 48px;
+            color: #2c241a;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: #e0b082;
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin: 40px 0 60px;
+        }
+        .art-card {
+            background: white;
+            border-radius: 32px;
+            padding: 28px 22px;
+            text-align: center;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f3e5d5;
+        }
+        .art-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 40px -12px rgba(0,0,0,0.15);
+            border-color: #e7cfb5;
+        }
+        .art-icon {
+            font-size: 3.2rem;
+            color: #b5651e;
+            margin-bottom: 20px;
+        }
+        .art-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .art-card p {
+            color: #6b5a48;
+            line-height: 1.4;
+        }
+
+        /* Галерея вдохновения (сетка картинок) */
+        .gallery {
+            background: #fef3e8;
+            border-radius: 56px;
+            padding: 50px 0;
+            margin: 40px 0;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .gallery-item {
+            background: #fff5ea;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .gallery-img {
+            background: linear-gradient(145deg, #f2e2d0, #ebd8c2);
+            height: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #a5662e;
+        }
+        .gallery-info {
+            padding: 18px;
+            text-align: center;
+        }
+        .gallery-info h4 {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .gallery-info p {
+            font-size: 0.85rem;
+            color: #7f684e;
+        }
+
+        /* Мини-игра "Рисовалка по точкам" — интерактивный холст */
+        .drawzone {
+            background: #fffaf4;
+            border-radius: 48px;
+            padding: 25px 32px 40px;
+            margin: 70px 0 50px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+        }
+        .draw-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        .canvas-container {
+            display: flex;
+            justify-content: center;
+        }
+        canvas {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.2);
+            cursor: crosshair;
+            width: 100%;
+            height: auto;
+            max-width: 700px;
+            border: 2px solid #e5cfb5;
+        }
+        .tools {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+            justify-content: center;
+        }
+        .tool-btn {
+            background: #f3e5d5;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .tool-btn i {
+            font-size: 1.1rem;
+        }
+        .tool-btn:hover {
+            background: #e7d2bc;
+            transform: scale(0.96);
+        }
+        .color-picker {
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 60px;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f3e5d5;
+            padding: 5px 16px;
+            border-radius: 60px;
+        }
+
+        /* Цитата */
+        .quote-block {
+            text-align: center;
+            padding: 40px 20px;
+            background: #e9dbc9;
+            border-radius: 48px;
+            margin: 50px 0;
+        }
+        .quote-text {
+            font-size: 1.6rem;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #2f241b;
+        }
+
+        footer {
+            background: #2c241a;
+            color: #d9cdbc;
+            padding: 40px 0 30px;
+            border-radius: 40px 40px 0 0;
+            margin-top: 60px;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 25px;
+            align-items: center;
+        }
+        .social i {
+            font-size: 1.8rem;
+            margin-left: 20px;
+            color: #d9cdbc;
+            transition: 0.2s;
+        }
+        .social i:hover {
+            color: #e0b082;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2.4rem; }
+            .section-title { font-size: 2rem; }
+            .draw-header { flex-direction: column; gap: 12px; }
+            .container { padding: 0 20px; }
+        }
+
+        button {
+            background: none;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="logo">
+            <i class="fas fa-palette"></i> Art<span style="color:#b5651e;">Studio</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#directions">Направления</a></li>
+            <li><a href="#gallery">Галерея</a></li>
+            <li><a href="#drawcanvas">Попробовать</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <div class="hero">
+            <h1>Рисование — язык души</h1>
+            <p>Откройте в себе художника: изучайте техники, получайте вдохновение и создавайте шедевры с нуля. Ваше творческое путешествие начинается здесь.</p>
+            <div class="btn-group">
+                <a href="#drawcanvas" class="btn btn-primary"><i class="fas fa-paintbrush"></i> Начать рисовать</a>
+                <a href="#directions" class="btn btn-outline"><i class="fas fa-compass"></i> Изучить стили</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Направления рисования -->
+    <div class="container" id="directions">
+        <h2 class="section-title">🎨 Жанры и техники</h2>
+        <div class="cards-grid">
+            <div class="art-card"><div class="art-icon"><i class="fas fa-watercolor"></i></div><h3>Акварель</h3><p>Лёгкость и прозрачность, воздушные переходы. Идеально для пленэров и нежных сюжетов.</p></div>
+            <div class="art-card"><div class="art-icon"><i class="fas fa-pencil-alt"></i></div><h3>Карандаш</h3><p>Классика графики: от набросков до фотореализма. Развивает наблюдательность и тон.</p></div>
+            <div class="art-card"><div class="art-icon"><i class="fas fa-fill-drip"></i></div><h3>Масло</h3><p>Глубокие цвета, фактурные мазки. Техника, которой пользовались великие мастера.</p></div>
+            <div class="art-card"><div class="art-icon"><i class="fas fa-laptop"></i></div><h3>Цифровая живопись</h3><p>Современный подход без границ: Photoshop, Procreate. Бесконечные возможности.</p></div>
+        </div>
+    </div>
+
+    <!-- Галерея вдохновения -->
+    <div class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">🖼️ Галерея вдохновения</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-img"><i class="fas fa-moon fa-3x"></i></div>
+                    <div class="gallery-info"><h4>«Лунная соната»</h4><p>акварель, мечтательность</p></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img"><i class="fas fa-tree fa-3x"></i></div>
+                    <div class="gallery-info"><h4>«Утренний лес»</h4><p>масло, импрессионизм</p></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img"><i class="fas fa-cat fa-3x"></i></div>
+                    <div class="gallery-info"><h4>«Рыжий кот»</h4><p>сухая пастель</p></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img"><i class="fas fa-mug-hot fa-3x"></i></div>
+                    <div class="gallery-info"><h4>«Кофе с корицей»</h4><p>цифровой скетчинг</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Интерактивная рисовалка -->
+    <div class="container" id="drawcanvas">
+        <div class="drawzone">
+            <div class="draw-header">
+                <h2 style="font-family: 'Playfair Display';"><i class="fas fa-paintbrush-fine"></i> Твоя цифровая мастерская</h2>
+                <p style="color:#896e50;">Нарисуй что угодно — от души!</p>
+            </div>
+            <div class="canvas-container">
+                <canvas id="drawCanvas" width="700" height="450" style="width:100%; height:auto; max-width:700px; aspect-ratio:700/450"></canvas>
+            </div>
+            <div class="tools">
+                <div class="slider-container">
+                    <i class="fas fa-circle"></i>
+                    <input type="range" id="brushSize" min="1" max="40" value="5">
+                    <span id="sizeValue" style="min-width: 30px;">5px</span>
+                </div>
+                <input type="color" id="colorPicker" class="color-picker" value="#b5651e">
+                <button class="tool-btn" id="clearCanvasBtn"><i class="fas fa-trash-alt"></i> Очистить</button>
+                <button class="tool-btn" id="eraserModeBtn"><i class="fas fa-eraser"></i> Ластик</button>
+                <button class="tool-btn" id="drawModeBtn"><i class="fas fa-paintbrush"></i> Кисть</button>
+                <button class="tool-btn" id="saveBtn"><i class="fas fa-download"></i> Сохранить</button>
+            </div>
+            <p style="text-align: center; margin-top: 18px; font-size: 0.8rem; color:#a58764;">✨ Рисуйте мышью или пальцем (на тач-устройствах). Наслаждайтесь творчеством!</p>
+        </div>
+    </div>
+
+    <!-- Цитата художника -->
+    <div class="container">
+        <div class="quote-block">
+            <div class="quote-text">
+                «У каждого ребенка есть художник. Трудность в том, чтобы остаться художником, когда вырастешь.» 
+                — Пабло Пикассо
+            </div>
+            <p style="margin-top: 18px;">🎨 Рисование тренирует радость и внимательность к деталям</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <div class="logo" style="color:#e6d5c0; background: none; -webkit-background-clip: unset; background-clip: unset;">ArtStudio <i class="fas fa-heart" style="color:#c18148;"></i></div>
+        <div class="social">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-pinterest"></i>
+            <i class="fab fa-youtube"></i>
+        </div>
+        <p>© 2025 Творческая студия | Рисование как вдохновение</p>
+    </div>
+</footer>
+
+<script>
+    (function(){
+        // --- Получение элементов canvas
+        const canvas = document.getElementById('drawCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Установка фактического разрешения canvas (чтобы не размывалось)
+        function resizeCanvas() {
+            const rect = canvas.getBoundingClientRect();
+            // Сохраняем соотношение 700/450, но устанавливаем реальные пиксели с помощью CSS размеров
+            // Однако мы задали жестко width=700 height=450 в атрибутах, поэтому рисование будет четким
+            // При изменении размера окна canvas визуально масштабируется CSS, но качество линии сохранится
+        }
+        window.addEventListener('resize', () => {});
+        
+        // Настройки по умолчанию
+        let drawing = false;
+        let currentColor = '#b5651e';
+        let brushSize = 5;
+        let eraserActive = false;
+        
+        // Функция инита кисти (настройка стиля)
+        function setBrush() {
+            ctx.globalCompositeOperation = 'source-over';
+            if(eraserActive) {
+                ctx.strokeStyle = '#ffffff';
+                ctx.fillStyle = '#ffffff';
+            } else {
+                ctx.strokeStyle = currentColor;
+                ctx.fillStyle = currentColor;
+            }
+            ctx.lineWidth = brushSize;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+        }
+        
+        // Очистка холста (белый фон с мягкой текстурой)
+        function clearCanvas() {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Лёгкая декоративная "зернистость" необязательно, но для ощущения бумаги
+        }
+        
+        // Начальная отрисовка
+        function initCanvas() {
+            clearCanvas();
+            setBrush();
+        }
+        
+        // События рисования
+        function startDrawing(e) {
+            drawing = true;
+            const pos = getCanvasCoordinates(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+        }
+        
+        function draw(e) {
+            if(!drawing) return;
+            e.preventDefault();
+            const pos = getCanvasCoordinates(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+        }
+        
+        function stopDrawing() {
+            drawing = false;
+            ctx.beginPath();
+        }
+        
+        // Получение координат мыши/пальца относительно canvas
+        function getCanvasCoordinates(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;   // canvas реальная ширина (700) / CSS ширина
+            const scaleY = canvas.height / rect.height;
+            let clientX, clientY;
+            
+            if(e.touches) {
+                if(e.touches.length === 0) return {x:0, y:0};
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+            
+            let x = (clientX - rect.left) * scaleX;
+            let y = (clientY - rect.top) * scaleY;
+            x = Math.min(Math.max(0, x), canvas.width);
+            y = Math.min(Math.max(0, y), canvas.height);
+            return { x, y };
+        }
+        
+        // Привязка событий (мышь + тач)
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseleave', stopDrawing);
+        
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDrawing(e); });
+        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); });
+        canvas.addEventListener('touchend', stopDrawing);
+        
+        // --- UI элементы управления
+        const colorPicker = document.getElementById('colorPicker');
+        const brushSizeSlider = document.getElementById('brushSize');
+        const sizeSpan = document.getElementById('sizeValue');
+        const clearBtn = document.getElementById('clearCanvasBtn');
+        const eraserBtn = document.getElementById('eraserModeBtn');
+        const drawBtn = document.getElementById('drawModeBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        
+        colorPicker.addEventListener('input', (e) => {
+            currentColor = e.target.value;
+            if(!eraserActive) {
+                setBrush();
+            } else {
+                // если активен ластик, смена цвета не влияет на вид, но запомним цвет для возврата
+                // сделаем что при выключении ластика цвет останется выбранным
+            }
+        });
+        
+        brushSizeSlider.addEventListener('input', (e) => {
+            brushSize = parseInt(e.target.value);
+            sizeSpan.innerText = brushSize + 'px';
+            setBrush();
+        });
+        
+        clearBtn.addEventListener('click', () => {
+            clearCanvas();
+        });
+        
+        eraserBtn.addEventListener('click', () => {
+            eraserActive = true;
+            setBrush();
+            // смена курсора (необязательно)
+            canvas.style.cursor = 'cell';
+        });
+        
+        drawBtn.addEventListener('click', () => {
+            eraserActive = false;
+            setBrush();
+            canvas.style.cursor = 'crosshair';
+        });
+        
+        saveBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'my_drawing.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+        
+        // Синхронизация при старте
+        setBrush();
+        initCanvas();
+        
+        // При изменении размера окна — пересчитываем координаты рисования в соответствии с масштабом, но холст остается 700x450 пикселей реальных.
+        // Все корректно.
+        
+        // Добавим небольшую кисть-приветствие: примерные линии (опционально)
+        // Можно нарисовать что-то дружелюбное на пустом холсте? Оставим белый, но можно добавить надпись "Начинай творить"
+        ctx.font = "18px 'Inter'";
+        ctx.fillStyle = "#d1bba2";
+        ctx.fillText("✏️ Проведи кистью...", 30, 70);
+        // через 2 секунды уберем текст? нет, при очистке исчезнет. Сделаем, чтобы при первом клике исчезал? Но это не критично
+        // пусть будет приветствие. При очистке удалится. Приятно.
+        
+        // Дополнительное улучшение: обновляем отображение значений кисти
+        function updateUI(){
+            sizeSpan.innerText = brushSize + 'px';
+        }
+        updateUI();
+        
+        // предотвращаем контекстное меню на canvas
+        canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+    })();
+</script>
+</body>
+</html>
+```
